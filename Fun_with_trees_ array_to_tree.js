@@ -1,14 +1,14 @@
 
 const TreeNode = function(value, left, right) {
     this.value = value;
-    this.left = left;
-    this.right = right;
+    // this.left = left;
+    // this.right = right;
 };
 
 function arrayToTree(array) {
     if (array && array.length) {
 
-        const node = new TreeNode(array[0], null, null);
+        const node = new TreeNode(array[0]);
         let current;
         const queue = [];
 
@@ -16,11 +16,11 @@ function arrayToTree(array) {
         current = queue.shift();
         for (let i = 1; i <= array.length - 1; i++) {
             
-            if (current.left == null) {
-                current.left = new TreeNode(array[i], null, null);
+            if (!current.left && current.left !== 0) {
+                current.left = new TreeNode(array[i]);
                 queue.push(current.left);
             } else {
-                current.right = new TreeNode(array[i], null, null);
+                current.right = new TreeNode(array[i]);
                 queue.push(current.right);
                 current = queue.shift();
             }
